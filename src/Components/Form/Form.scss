@@ -1,0 +1,39 @@
+.formSection{
+
+   .leftSection{
+       border-radius: 25px;
+    //    background-color: red;
+       box-shadow:  0px 0px 20px 11px rgb(204, 192, 192);
+       margin-top: 50px;
+       padding: 50px 0;
+
+    .form{
+        width: 90%;
+        margin: auto;
+        h4{
+            font-size: 22px;
+            font-weight: 500;
+        }
+        input{
+            padding:25px 0;
+        }
+        button{
+          font-size: 22px; 
+          border: 1px solid #007bff; 
+          box-shadow: none;
+          border-radius: none !important;
+        }
+    }
+   }
+   .rightSection{
+       margin-top: 50px;
+       border-radius: 15px;
+       box-shadow:  0px 0px 20px 11px rgb(204, 192, 192);
+       padding: 50px 0;
+       .table{
+           width: 90%;
+           margin: auto;
+       }
+   }
+
+}
