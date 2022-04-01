@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Form.css';
 const Form = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+
+  const [data, setData] = useState([]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setData([...data, { name: name, email: email, phone: phone }]);
+    setName('');
+    setEmail('');
+    setPhone('');
+  };
+
   return (
     <>
       <div className='formSection'>
@@ -8,23 +22,41 @@ const Form = () => {
           <div className='row'>
             <div className='col-sm-4 '>
               <div className='leftSection'>
-                <div className='form'>
+                <form className='form' onSubmit={(e) => submitHandler(e)}>
                   <div>
                     <h4>Name</h4>
-                    <input className='form-control' type='text' />
+                    <input
+                      className='form-control'
+                      value={name}
+                      type='text'
+                      required
+                      onChange={(e) => setName(e.target.value)}
+                    />
                   </div>
                   <div className='mt-4'>
                     <h4>Email</h4>
-                    <input className='form-control' type='text' />
+                    <input
+                      className='form-control'
+                      value={email}
+                      type='text'
+                      required
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
                   </div>
                   <div className='mt-4'>
                     <h4>Phone No</h4>
-                    <input className='form-control' type='number' />
+                    <input
+                      className='form-control'
+                      value={phone}
+                      type='text'
+                      required
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
                   </div>
                   <button className='btn btn-block btn text-primary bg-white mt-4'>
                     Save Data
                   </button>
-                </div>
+                </form>
               </div>
             </div>
             <div className='col-sm-8'>
@@ -39,12 +71,17 @@ const Form = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>Hr Admin</td>
-                      <td>adminhr@mail.com</td>
-                      <td>9865232365</td>
-                    </tr>
+                    {data &&
+                      data.map((singledata, index) => {
+                        return (
+                          <tr key={index}>
+                            <td>{index + 1}</td>
+                            <td>{singledata.name}</td>
+                            <td>{singledata.email}</td>
+                            <td>{singledata.phone}</td>
+                          </tr>
+                        );
+                      })}
                   </tbody>
                 </table>
               </div>
