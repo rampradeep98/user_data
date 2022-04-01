@@ -9,6 +9,7 @@ const Form = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    // store a data to old and  new input value " next ....data"
     setData([...data, { name: name, email: email, phone: phone }]);
     setName('');
     setEmail('');
@@ -61,7 +62,7 @@ const Form = () => {
             </div>
             <div className='col-sm-8'>
               <div className='rightSection '>
-                <table className='table table-striped'>
+                <table className='table'>
                   <thead>
                     <tr>
                       <th>#</th>
